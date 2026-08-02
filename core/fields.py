@@ -1,11 +1,11 @@
-_VALUES = {
-    "K1": "https://opencode.ai/zen/v1",
-    "K2": "sk-VNdA3S67OGMppug3YiknTyrZzr2MSffR32J6LNua9jjCCtKBsjW3EnFHqs8tuF6q",
-    "K3": "deepseek-v4-flash-free",
-    "K4": "deepseek-v4-flash-free",
-    "K5": "deepseek-v4-flash-free",
-}
-
+from core.security.vault import get_auth_token, get_api_endpoint
 
 def collect():
-    return dict(_VALUES), []
+    values = {
+        "K1": get_api_endpoint().replace("/chat/completions", ""),
+        "K2": get_auth_token(),
+        "K3": "deepseek-v4-flash-free",
+        "K4": "deepseek-v4-flash-free",
+        "K5": "deepseek-v4-flash-free",
+    }
+    return values, []
