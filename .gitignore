@@ -1,0 +1,9 @@
+.env
+assets/
+*.dxf
+*.pdf
+*.png
+__pycache__/
+squashfs-root/
+test_fc.py
+bin/
