@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "snapping_tolerance",
+        "description": "Maximum snapping distance to align spatial inputs onto grids (meters)",
+        "value": 0.15
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "global_equilibrium_error_limit",
+        "description": "Maximum allowable percentage difference between sum of vertical reactions and vertical loads",
+        "value": 1.0
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "minimum_column_grid_snapping",
+        "description": "Grid nodes must have column supports if structural loading paths require them",
+        "value": true
+      },
+      "geometry": null
+    }
+  ]
+}
