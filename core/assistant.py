@@ -6,17 +6,11 @@ Uses OpenCode Zen models with a strict non-disclosure prompt for the model ID.
 
 import requests
 import json
+from core.security.vault import get_api_endpoint, build_headers
 
 def chat_with_engineer(messages: list, current_state: dict) -> str:
-    """
-    Sends the conversation history and current structural verification state
-    to the OpenCode Zen API. Returns the assistant's text response.
-    """
-    url = "https://opencode.ai/zen/v1/chat/completions"
-    headers = {
-        "Authorization": "Bearer sk-VNdA3S67OGMppug3YiknTyrZzr2MSffR32J6LNua9jjCCtKBsjW3EnFHqs8tuF6q",
-        "Content-Type": "application/json"
-    }
+    url = get_api_endpoint()
+    headers = build_headers()
 
     # Strict system instructions detailing the current structural state & identity guardrails
     system_prompt = f"""You are a Systems Synthesis Assistant and a Senior Spatial Compliance Engineer.
