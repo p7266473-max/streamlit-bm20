@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "dead_load_coefficient",
+        "description": "Uniform slab dead load in kN/m2 (includes self-weight + finishes)",
+        "value": 4.5
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "live_load_coefficient",
+        "description": "Uniform floor live load in kN/m2 (residential / standard office code)",
+        "value": 3.0
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "tributary_check_upper_ratio_limit",
+        "description": "Sanity check upper bound ratio for simple load distributions compared to matrix analysis",
+        "value": 1.25
+      },
+      "geometry": null
+    }
+  ]
+}
