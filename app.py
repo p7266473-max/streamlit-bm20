@@ -79,7 +79,7 @@ st.markdown("""
         Describe your design requirements → Geometry compilation → Verification engine execution.
     </p>
     <p style="color:#64748B;margin:10px 0 0 0;font-size:0.85rem">
-        Proprietary spatial calculation dashboard.
+        Spatial calculation dashboard demo.
     </p>
 </div>
 """, unsafe_allow_html=True)
