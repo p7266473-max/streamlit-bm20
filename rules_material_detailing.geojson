@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "concrete_fy",
+        "description": "Concrete characteristic cylinder strength f_ck (MPa)",
+        "value": 30.0
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+      "rule_type": "steel_fyk",
+      "description": "Steel yield strength f_yk (MPa) - HYSD deformed bars Grade 415",
+      "value": 415.0
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "allowable_dc_ratio",
+        "description": "Maximum allowable Demand-to-Capacity ratio (limit state check)",
+        "value": 1.0
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "rule_type": "detailing_rebar_choices",
+        "description": "Rebar diameter standard catalog mappings",
+        "value": [10, 12, 16, 20, 25, 32]
+      },
+      "geometry": null
+    }
+  ]
+}
