@@ -1,0 +1,12 @@
+ezdxf[draw]
+shapely
+pyyaml
+requests
+reportlab
+streamlit
+numpy
+python-docx
+matplotlib
+smolagents[openai]
+pillow
+plotly
