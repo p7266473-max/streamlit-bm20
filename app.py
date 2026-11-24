@@ -1,12 +1,10 @@
 import os
 import streamlit as st
 
-from core import fields
 from core.freecad_engine import generate_freecad_model, generate_freecad_script_from_prompt
 from core.freecad_script_runner import run_freecad_script
 from core.bim_to_geojson import edges_to_geojson
 from core.viewer3d import build_3d_bim_figure
-from core.assistant import chat_with_engineer
 from generators import (
     generate_dxf_export, generate_pdf_report, render_dxf_to_png, export_drawing_to_pdf,
     generate_footing_report, generate_comprehensive_engineer_report
@@ -86,13 +84,8 @@ st.markdown("""
 
 # Top Navigation Buttons (Only visible AFTER pipeline execution completes)
 if st.session_state.get("processed"):
-    top_col1, top_col2 = st.columns(2)
-    with top_col1:
-        st.markdown('<a href="#professional-deliverables" target="_self" style="text-decoration:none;"><div style="background-color:#0284C7; color:white; padding:9px 14px; border-radius:6px; text-align:center; font-weight:600; font-size:0.92rem;">📥 Jump to Deliverables</div></a>', unsafe_allow_html=True)
-    with top_col2:
-        st.markdown('<a href="#structural-assistant" target="_self" style="text-decoration:none;"><div style="background-color:#1E293B; color:white; padding:9px 14px; border-radius:6px; text-align:center; font-weight:600; font-size:0.92rem; border:1px solid #334155;">💬 Talk to Systems Assistant</div></a>', unsafe_allow_html=True)
+    st.markdown('<a href="#professional-deliverables" target="_self" style="text-decoration:none;"><div style="background-color:#0284C7; color:white; padding:9px 14px; border-radius:6px; text-align:center; font-weight:600; font-size:0.92rem;">📥 Jump to Deliverables</div></a>', unsafe_allow_html=True)
 
-values, _missing = fields.collect()
 
 col1, col2, col3 = st.columns([1.2, 1.6, 1.2])
 
@@ -110,8 +103,8 @@ with col1:
     st.markdown("**💬 Describe your intended home or floor plan layout**")
     st.caption(
         "Simply describe your desired house or room arrangement in plain text. "
-        "Our system will compile your description, generate core geometry coordinates, "
-        "and execute headless structural validation."
+        "The local generator uses footprint dimensions and a fixed room layout, "
+        "then executes headless structural validation."
     )
 
     sample_user_prompt = (
@@ -135,16 +128,15 @@ with col1:
 
     if st.session_state.get("processed"):
         st.markdown('<a href="#professional-deliverables" target="_self"><button style="width:100%; padding:9px; margin-top:10px; background-color:#0284C7; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">📥 Jump to Deliverables</button></a>', unsafe_allow_html=True)
-        st.markdown('<a href="#structural-assistant" target="_self"><button style="width:100%; padding:9px; margin-top:6px; background-color:#1E293B; color:white; border:1px solid #334155; border-radius:6px; font-weight:600; cursor:pointer;">💬 Talk to Systems Assistant</button></a>', unsafe_allow_html=True)
 
 if run_btn:
     if not user_home_prompt.strip():
         st.error("Please provide a description of your intended home or floor plan.")
     else:
-        st.info("🤖 **Interpreting requirements prompt → Compiling spatial coordinates → Solving calculation matrix...**")
+        st.info("**Reading footprint dimensions → Compiling spatial coordinates → Solving calculation matrix...**")
         with st.spinner("🔧 Compiling geometry coordinates → running verification matrix solver..."):
             try:
-                # 1. AI generation of geometry script
+                # 1. Local parametric generation of geometry script
                 fc_script = generate_freecad_script_from_prompt(user_home_prompt)
 
                 # 2. Execute generated script headlessly
@@ -351,46 +343,6 @@ if st.session_state.get("processed"):
                     use_container_width=True
                 )
 
-    # ── 💬 Interactive Systems Chat Assistant (Visible after processing) ──
-    st.markdown('<div id="structural-assistant"></div>', unsafe_allow_html=True)
-    st.markdown("---")
-    st.subheader("💬 Talk to Systems Assistant")
-    st.caption(
-        "Directly query the calculations using our interactive systems assistant. "
-        "Ask about design compliance thresholds, layout spans, or loading capacity distributions."
-    )
-
-    if "chat_messages" not in st.session_state:
-        st.session_state["chat_messages"] = [
-            {"role": "assistant", "content": "Welcome. I have verified the spatial calculation results generated from your home description. Ask me any technical questions about the layout capacity or compliance thresholds."}
-        ]
-
-    chat_container = st.container(height=350)
-    with chat_container:
-        for message in st.session_state["chat_messages"]:
-            with st.chat_message(message["role"]):
-                st.markdown(message["content"])
-
-    if prompt := st.chat_input("Ask the systems assistant a question about this layout..."):
-        with chat_container:
-            st.session_state["chat_messages"].append({"role": "user", "content": prompt})
-            with st.chat_message("user"):
-                st.markdown(prompt)
-
-            current_state = {
-                "freecad_script": st.session_state.get("generated_fc_script", "No script generated"),
-                "geojson_data": st.session_state.get("geojson_data"),
-                "check1": st.session_state.get("check1"),
-                "check2": st.session_state.get("check2"),
-                "check3": st.session_state.get("check3")
-            }
-
-            with st.chat_message("assistant"):
-                with st.spinner("Analyzing calculation data..."):
-                    response = chat_with_engineer(st.session_state["chat_messages"][1:], current_state)
-                    st.markdown(response)
-                    st.session_state["chat_messages"].append({"role": "assistant", "content": response})
-        st.rerun()
 
 else:
     with col2:

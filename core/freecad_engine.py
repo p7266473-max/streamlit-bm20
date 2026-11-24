@@ -103,7 +103,6 @@ print("FREECAD CAD EXPORT GENERATED SUCCESSFULLY!")
     return output_fcstd, output_step
 
 import re
-import requests
 
 def generate_parametric_freecad_script(user_prompt: str) -> str:
     """
@@ -121,7 +120,7 @@ def generate_parametric_freecad_script(user_prompt: str) -> str:
         L = 15240.0  # 50 ft in mm
 
     return f"""# FreeCAD 2D Architectural Script — Generated from user prompt
-# Description: {user_prompt.strip()}
+# Description: {user_prompt.strip()!r}
 # Dimensions: {W/304.8:.1f} ft x {L/304.8:.1f} ft ({W:.1f} mm x {L:.1f} mm)
 
 import FreeCAD as App
@@ -170,13 +169,6 @@ doc.recompute()
 print("BM20 FreeCAD architectural script generated & recomputed successfully!")
 """
 
-from core.kernel.synthesis import generate_spatial_script
-
 def generate_freecad_script_from_prompt(user_prompt: str) -> str:
-    """
-    Converts a natural language home/building description into a valid 2D CAD Python script.
-    Delegates to deep nested kernel module.
-    """
-    return generate_spatial_script(user_prompt)
-
-
+    """Generate a local, deterministic CAD script without external services."""
+    return generate_parametric_freecad_script(user_prompt)

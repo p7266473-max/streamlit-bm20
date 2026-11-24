@@ -1,7 +1,6 @@
-import io
 import math
 
-from . import geometry, vision
+from . import geometry
 
 from solver_frame3dd import run_frame3dd_analysis
 from verify_checkpoints import verify_geometry_equilibrium, verify_material_detailing
@@ -91,8 +90,7 @@ def _run_loop(current, max_iterations):
 
 def run(values, image_bytes=None, image_mime=None, num_floors=1, max_iterations=3, raw_text=None, rooms=None):
     if rooms is None and image_bytes:
-        layout = vision.extract(values, io.BytesIO(image_bytes))
-        rooms = layout.get("rooms", [])
+        raise ValueError("Image interpretation is no longer supported; provide explicit rooms or GeoJSON.")
 
     current = _heal(geometry.build(values, rooms or [], num_floors, raw_text))
     return _run_loop(current, max_iterations)
