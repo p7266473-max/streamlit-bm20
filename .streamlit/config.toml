@@ -6,8 +6,11 @@ showErrorDetails = false
 hideTopBar = true
 
 [theme]
-base = "light"
-primaryColor = "#76528F"
-backgroundColor = "#F1EDF4"
-secondaryBackgroundColor = "#E4DEE9"
-textColor = "#292332"
+base = "dark"
+primaryColor = "#BCA0DA"
+backgroundColor = "#080808"
+secondaryBackgroundColor = "#292332"
+textColor = "#F1EDF4"
+
+[server]
+enableStaticServing = true

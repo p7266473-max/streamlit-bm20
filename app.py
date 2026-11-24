@@ -20,10 +20,12 @@ import streamlit.components.v1 as components
 
 st.markdown("""
 <style>
-/* Subtle engineering wallpaper: CSS only, no external assets. */
+/* Original supplied wallpaper, served locally by Streamlit. */
 [data-testid="stAppViewContainer"] {
-    background-color: #F1EDF4;
-    background-image: radial-gradient(ellipse at 12% 8%, #E3D5EEAA, transparent 55%), radial-gradient(ellipse at 88% 75%, #D4CEDCAA, transparent 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='160' viewBox='0 0 180 160'%3E%3Cg fill='none' stroke='%237B668B' stroke-opacity='.12' stroke-width='1.2'%3E%3Cpath d='M12 20h38v28H12zM12 34h38M31 20v28M83 15l22 12-22 12-22-12zM61 27v24l22 12 22-12V27M83 39v24M125 18h36l-18 31zM15 112l22-32 22 32zM15 112h44M82 88h35v35H82zM82 88l35 35M117 88l-35 35M135 88v40h30M135 128l30-40'/%3E%3Ccircle cx='143' cy='68' r='5'/%3E%3Ccircle cx='65' cy='139' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    background-color: #080808;
+    background-image: url("./app/static/telegram.jpg");
+    background-repeat: repeat;
+    background-size: 929px 622px;
 }
 
 /* Hide Streamlit top header, toolbar, GitHub fork badges, menu, and decoration */
