@@ -4,3 +4,10 @@ showErrorDetails = false
 
 [ui]
 hideTopBar = true
+
+[theme]
+base = "light"
+primaryColor = "#0369A1"
+backgroundColor = "#F1F5F9"
+secondaryBackgroundColor = "#E2E8F0"
+textColor = "#0F172A"
