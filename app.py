@@ -23,9 +23,11 @@ st.markdown("""
 /* Original supplied wallpaper, served locally by Streamlit. */
 [data-testid="stAppViewContainer"] {
     background-color: #080808;
-    background-image: url("./app/static/telegram.jpg");
-    background-repeat: repeat;
-    background-size: 929px 622px;
+    background-image: url("./app/static/telegram.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* Hide Streamlit top header, toolbar, GitHub fork badges, menu, and decoration */
