@@ -20,6 +20,12 @@ import streamlit.components.v1 as components
 
 st.markdown("""
 <style>
+/* Subtle engineering wallpaper: CSS only, no external assets. */
+[data-testid="stAppViewContainer"] {
+    background-color: #F1EDF4;
+    background-image: radial-gradient(ellipse at 12% 8%, #E3D5EEAA, transparent 55%), radial-gradient(ellipse at 88% 75%, #D4CEDCAA, transparent 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='160' viewBox='0 0 180 160'%3E%3Cg fill='none' stroke='%237B668B' stroke-opacity='.12' stroke-width='1.2'%3E%3Cpath d='M12 20h38v28H12zM12 34h38M31 20v28M83 15l22 12-22 12-22-12zM61 27v24l22 12 22-12V27M83 39v24M125 18h36l-18 31zM15 112l22-32 22 32zM15 112h44M82 88h35v35H82zM82 88l35 35M117 88l-35 35M135 88v40h30M135 128l30-40'/%3E%3Ccircle cx='143' cy='68' r='5'/%3E%3Ccircle cx='65' cy='139' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Hide Streamlit top header, toolbar, GitHub fork badges, menu, and decoration */
 #MainMenu {visibility: hidden !important; display: none !important;}
 header {visibility: hidden !important; display: none !important;}
@@ -71,8 +77,8 @@ setInterval(cleanupStreamlitUI, 250);
 """, height=0, width=0)
 
 st.markdown("""
-<div style="background:linear-gradient(120deg,#0F172A,#172D46);padding:28px;border-radius:14px;border-bottom:3px solid #38BDF8;margin-bottom:24px">
-    <div style="color:#7DD3FC;font-size:0.76rem;font-weight:700;letter-spacing:0.13em;margin-bottom:10px">COMPUTATIONAL ENGINEERING / RESEARCH DEMONSTRATOR</div>
+<div style="background:linear-gradient(120deg,#292332,#493653);padding:28px;border-radius:14px;border-bottom:3px solid #BCA0DA;margin-bottom:24px">
+    <div style="color:#E0C7F5;font-size:0.76rem;font-weight:700;letter-spacing:0.13em;margin-bottom:10px">COMPUTATIONAL ENGINEERING / RESEARCH DEMONSTRATOR</div>
     <h1 style="color:white;margin:0;font-size:2.2rem">🏗️ Spatial Core Solver — BM20</h1>
     <p style="color:#94A3B8;margin:6px 0 0 0;font-size:1.1rem">
         Parametric modelling · Numerical analysis · Engineering verification
@@ -93,7 +99,7 @@ st.markdown("""
 
 # Top Navigation Buttons (Only visible AFTER pipeline execution completes)
 if st.session_state.get("processed"):
-    st.markdown('<a href="#professional-deliverables" target="_self" style="text-decoration:none;"><div style="background-color:#0284C7; color:white; padding:9px 14px; border-radius:6px; text-align:center; font-weight:600; font-size:0.92rem;">📥 Jump to Deliverables</div></a>', unsafe_allow_html=True)
+    st.markdown('<a href="#professional-deliverables" target="_self" style="text-decoration:none;"><div style="background-color:#76528F; color:white; padding:9px 14px; border-radius:6px; text-align:center; font-weight:600; font-size:0.92rem;">📥 Jump to Deliverables</div></a>', unsafe_allow_html=True)
 
 
 col1, col2, col3 = st.columns([1.2, 1.6, 1.2])
@@ -134,7 +140,7 @@ with col1:
     )
 
     if st.session_state.get("processed"):
-        st.markdown('<a href="#professional-deliverables" target="_self"><button style="width:100%; padding:9px; margin-top:10px; background-color:#0284C7; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">📥 Jump to Deliverables</button></a>', unsafe_allow_html=True)
+        st.markdown('<a href="#professional-deliverables" target="_self"><button style="width:100%; padding:9px; margin-top:10px; background-color:#76528F; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">📥 Jump to Deliverables</button></a>', unsafe_allow_html=True)
 
 if run_btn:
     if not user_home_prompt.strip():
