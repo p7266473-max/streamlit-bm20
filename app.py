@@ -71,18 +71,19 @@ setInterval(cleanupStreamlitUI, 250);
 """, height=0, width=0)
 
 st.markdown("""
-<div style="background-color:#0F172A;padding:24px;border-radius:12px;border-bottom:4px solid #0284C7;margin-bottom:24px">
+<div style="background:linear-gradient(120deg,#0F172A,#172D46);padding:28px;border-radius:14px;border-bottom:3px solid #38BDF8;margin-bottom:24px">
+    <div style="color:#7DD3FC;font-size:0.76rem;font-weight:700;letter-spacing:0.13em;margin-bottom:10px">COMPUTATIONAL ENGINEERING / RESEARCH DEMONSTRATOR</div>
     <h1 style="color:white;margin:0;font-size:2.2rem">🏗️ Spatial Core Solver — BM20</h1>
     <p style="color:#94A3B8;margin:6px 0 0 0;font-size:1.1rem">
-        Describe your design requirements → Geometry compilation → Verification engine execution.
+        Parametric modelling · Numerical analysis · Engineering verification
     </p>
     <p style="color:#64748B;margin:10px 0 0 0;font-size:0.85rem">
         <strong style="color:#E2E8F0;font-size:1.05rem">Computational Engineering Research Prototype</strong>
     </p>
     <p style="color:#CBD5E1;margin:8px 0 0 0;font-size:0.95rem;line-height:1.6">
         This prototype demonstrates the potential of integrating parametric modelling, computational structural analysis, automated verification and engineering documentation within a unified digital workflow.
-        <strong>Building dimensions are adjustable; room counts and arrangements are predefined</strong> to provide a consistent basis for computational demonstrations.
-        Future development will explore adaptive spatial planning, constraint-based design and more comprehensive engineering validation.
+        <strong>The current prototype defaults to a single storey. Building dimensions are adjustable; room counts and arrangements are predefined</strong> to provide a consistent basis for computational demonstrations.
+        Future development will explore adaptive spatial planning, multi-storey analysis, constraint-based design and more comprehensive engineering validation.
     </p>
     <p style="color:#FCD34D;margin:10px 0 0 0;font-size:0.9rem;font-weight:600">
         For educational, research and demonstration purposes only. Not intended for construction or certified structural design.
@@ -103,28 +104,26 @@ with col1:
     st.markdown("---")
     st.markdown("**Construction Parameter Configuration**")
     num_floors = st.radio(
-        "How many floors do you want to construct?", [1, 2], index=0,
-        help="Specifying 2 floors doubles the design load vectors."
+        "Building configuration", [1, 2], index=0,
+        format_func=lambda n: "Single storey — Current prototype" if n == 1 else "Two storeys — Future development",
+        help="Two-storey visualization is illustrative only. Full multi-storey structural analysis is planned for future development."
     )
 
     st.markdown("---")
-    st.markdown("**💬 Describe your intended home or floor plan layout**")
+    st.markdown("**Building footprint specification**")
     st.caption(
-        "Simply describe your desired house or room arrangement in plain text. "
-        "The local generator uses footprint dimensions and a fixed room layout, "
-        "then executes headless structural validation."
+        "Enter the building footprint dimensions. The prototype scales a predefined spatial layout and runs computational verification."
     )
 
     sample_user_prompt = (
-        "A 2-story luxury residence with 5 rooms: Living Room, Master Suite, Kitchen, "
-        "Dining Hall, and Guest Bedroom. Overall footprint 30ft x 50ft."
+        "Single-storey residential prototype. Overall footprint 30ft x 50ft."
     )
 
     user_home_prompt = st.text_area(
-        label="Natural Language Home / Floor Plan Description",
+        label="Footprint description",
         value=sample_user_prompt,
         height=180,
-        help="Enter details such as room types, footprint size, or floor arrangement.",
+        help="Use dimensions in feet, for example 30ft x 50ft. Room arrangements are predefined.",
         key="user_home_prompt_input"
     )
 
