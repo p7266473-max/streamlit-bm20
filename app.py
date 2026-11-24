@@ -77,7 +77,15 @@ st.markdown("""
         Describe your design requirements → Geometry compilation → Verification engine execution.
     </p>
     <p style="color:#64748B;margin:10px 0 0 0;font-size:0.85rem">
-        Spatial calculation dashboard demo.
+        <strong style="color:#E2E8F0;font-size:1.05rem">Computational Engineering Research Prototype</strong>
+    </p>
+    <p style="color:#CBD5E1;margin:8px 0 0 0;font-size:0.95rem;line-height:1.6">
+        This prototype demonstrates the potential of integrating parametric modelling, computational structural analysis, automated verification and engineering documentation within a unified digital workflow.
+        <strong>Building dimensions are adjustable; room counts and arrangements are predefined</strong> to provide a consistent basis for computational demonstrations.
+        Future development will explore adaptive spatial planning, constraint-based design and more comprehensive engineering validation.
+    </p>
+    <p style="color:#FCD34D;margin:10px 0 0 0;font-size:0.9rem;font-weight:600">
+        For educational, research and demonstration purposes only. Not intended for construction or certified structural design.
     </p>
 </div>
 """, unsafe_allow_html=True)
